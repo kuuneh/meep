@@ -1,7 +1,6 @@
 {
   "name": "meep",
   "compatibility_date": "2025-08-04",
-  "main": "src/worker.js",
   "site": {
     "bucket": "./dist"
   }
