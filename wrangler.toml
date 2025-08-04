@@ -1,7 +1,6 @@
 name = "meep"
 main = "src/worker.js"
 compatibility_date = "2025-08-04"
-type = "javascript"
 
 [site]
 bucket = "./dist"
