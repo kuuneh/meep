@@ -5,6 +5,10 @@ compatibility_date = "2025-08-04"
 [site]
 bucket = "./dist"
 
+[[kv_namespaces]]
+binding = "ASSETS"
+id = "__STATIC_CONTENT"
+
 [observability.logs]
 enabled = true
 
