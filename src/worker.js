@@ -1,6 +1,5 @@
 export default {
-  async fetch(request, env, ctx) {
-    // Automatically serve files from your dist folder
+  async fetch(request, env) {
     return env.ASSETS.fetch(request);
   },
 };

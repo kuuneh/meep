@@ -7,7 +7,7 @@ bucket = "./dist"
 
 [[kv_namespaces]]
 binding = "ASSETS"
-id = "__STATIC_CONTENT"
+id = "db6ad5cc2e06495bbce712c731c7dc66"
 
 [observability.logs]
 enabled = true
