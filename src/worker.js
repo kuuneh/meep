@@ -1,5 +1,5 @@
 export default {
-  async fetch(request) {
-    return new Response('Hello from Worker!', { status: 200 });
-  }
-}
+  async fetch(request, env, ctx) {
+    return await env.ASSETS.fetch(request);
+  },
+};
