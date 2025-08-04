@@ -5,3 +5,8 @@ type = "javascript"
 
 [site]
 bucket = "./dist"
+[observability.logs]
+enabled = true
+
+
+
