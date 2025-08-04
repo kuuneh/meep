@@ -1,5 +1,4 @@
 name = "meep-frontend"
 compatibility_date = "2025-08-04"
-pages_build_output_dir = "./dist"
 [site]
 bucket = "./dist"
