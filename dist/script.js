@@ -37,15 +37,24 @@ const colorPool = [
       return [shuffled[0], shuffled[1]];
     }
 
-    function setGradientFromPool() {
-      const [color1, color2] = getTwoDistinctColors();
-      const angle = 180;
-      document.body.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
-    }
+  function setGradientFromPool() {
+    const [color1, color2] = getTwoDistinctColors();
+    const angle = 180;
+    document.body.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
 
-    document.addEventListener("DOMContentLoaded", () => {
-      setGradientFromPool();
-    });
+    // Dynamically update theme-color
+    let themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (!themeMeta) {
+      themeMeta = document.createElement("meta");
+      themeMeta.setAttribute("name", "theme-color");
+      document.head.appendChild(themeMeta);
+    }
+    themeMeta.setAttribute("content", color1);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setGradientFromPool();
+  });
 
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById('hamburger');
