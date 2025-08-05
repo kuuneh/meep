@@ -194,3 +194,43 @@ html, body {
   display: flex;
   gap: 1rem;
 }
+
+.btncontainer {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  padding: 20px;          /* some padding for small screens */
+  box-sizing: border-box; /* include padding in width */
+}
+
+/* Your button styles */
+.button {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: hue-rotate(120deg);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  font-family: "Gantari", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  /* Make it block-level to allow width control on mobile */
+  display: block;
+  max-width: 50%;  /* prevent overflow on small screens */
+  width: 200px;     /* fixed width on desktop */
+  text-align: center;
+  margin: 10px auto; /* center inside container */
+  border-radius: 8px; /* optional: nicer rounded corners */
+  box-sizing: border-box;
+    transition: transform 0.3s ease; /* smooth scaling */
+}
+.button:hover {
+  transform: scale(1.1); /* increase size by 10% */
+}
+/* Responsive adjustment */
+@media (max-width: 400px) {
+  .button {
+    width: 90%; /* almost full width on very small screens */
+    padding: 12px 0;
+    font-size: 14px;
+  }
+}
