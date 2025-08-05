@@ -163,7 +163,6 @@ html, body {
     transform: translateX(100%); /* start off-screen right */
     transition: transform 0.3s ease;
     z-index: 9999;
-    overflow: auto;
     display: flex;
     backdrop-filter: blur(8px); /* Inverts colors behind the object */
   }
