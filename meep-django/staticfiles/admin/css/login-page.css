@@ -42,10 +42,40 @@
 }
 
 .container {
-  position: relative;
+  padding-top: 0;
+  min-height: 100vh;       /* full height */
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+  flex-direction: column;
+  margin-top: 3.75rem;     /* space for navbar */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 300px;
+  z-index: 2;
+}
+
+input, button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
 }
 
 .vertical-box {
@@ -111,6 +141,7 @@ html, body {
     z-index: 10;
     color: white;
     backdrop-filter: blur(8px);
+    border-radius: 0px 0px 20px 20px;
   }
 
   .logo {
@@ -233,4 +264,79 @@ html, body {
     padding: 12px 0;
     font-size: 14px;
   }
+}
+
+.custom-login-form {
+  width: 320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  font-family: "Mozilla Text", sans-serif;
+  color: white;
+}
+
+/* Input group wrapper */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+/* Hide default input styles */
+.custom-login-form input {
+  width: 100%;
+  padding: 12px 0 8px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Label positioned over input initially */
+.custom-login-form label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+
+/* When input focused or has value, float label up */
+.custom-login-form input:focus,
+.custom-login-form input:not(:placeholder-shown) {
+  border-color: #a0ffea;
+}
+
+.custom-login-form input:focus + label,
+.custom-login-form input:not(:placeholder-shown) + label {
+  top: -12px;
+  font-size: 0.8rem;
+  color: #a0ffea;
+}
+
+/* Remove placeholder text (optional, for cleaner style) */
+.custom-login-form input::placeholder {
+  color: transparent;
+}
+
+/* Button style */
+.btn-login {
+  background-color: rgba(0, 255, 192, 0.4);
+  color: #003333;
+  padding: 14px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.btn-login:hover {
+  background-color: rgba(0, 255, 192, 0.7);
 }

@@ -139,9 +139,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const button = document.querySelector('.button');
-let deg = 0;
-setInterval(() => {
-  deg = (deg + 2) % 360;
-  button.style.backdropFilter = `hue-rotate(${deg}deg)`;
-}, 30);
+const form = document.getElementById("customLoginForm");
+const fakeInputs = form.querySelectorAll(".fake-input-group");
+
+form.addEventListener("submit", (e) => {
+  // Copy the contenteditable div text to hidden inputs
+  fakeInputs.forEach(div => {
+    const name = div.getAttribute("data-name");
+    const value = div.textContent.trim();
+    const hiddenInput = form.querySelector(`input[name=${name}]`);
+    if (hiddenInput) hiddenInput.value = value;
+  });
+});

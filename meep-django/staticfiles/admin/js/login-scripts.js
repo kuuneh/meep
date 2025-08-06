@@ -138,10 +138,3 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Missing #hamburger or #navMenu elements");
   }
 });
-
-const button = document.querySelector('.button');
-let deg = 0;
-setInterval(() => {
-  deg = (deg + 2) % 360;
-  button.style.backdropFilter = `hue-rotate(${deg}deg)`;
-}, 30);

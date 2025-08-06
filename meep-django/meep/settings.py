@@ -87,12 +87,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # CORS
-CORS_ALLOWED_ORIGINS = [
-    "https://meep.wtf",
-]
-
+SESSION_COOKIE_DOMAIN = ".meep.wtf"   # Allow cookie across all subdomains
+CSRF_COOKIE_DOMAIN = ".meep.wtf"      # Also allow CSRF token to be valid across subdomains
 CSRF_TRUSTED_ORIGINS = [
-    "https://meep.wtf",
+    "https://login.meep.wtf",
+    "https://api.meep.wtf",
 ]
 
 # Internationalization

@@ -2,20 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Meep</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Meep Login</title>
   <link rel="stylesheet" href="https://static.meep.wtf/static/admin/css/login-page.css" />
 </head>
-<body style="background-color: black;">
-  <div class="title-box" id="fontfamily">
-    <h1 id="title">Meep Login</h1>
-  </div>
+<body>
+  <!-- Login form container -->
+   <div style="height: 6rem;"></div>
   <div class="container">
-    <div class="vertical-box"></div>
-    <div class="small-box">
-      <h2>Work In Progress :)</h2>
-    </div>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+
+    <form method="POST" id="customLoginForm">
+      {% csrf_token %}
+      
+      <div class="fake-input-group" data-name="email" tabindex="0" aria-label="Email" role="textbox" contenteditable="true" spellcheck="false" data-placeholder="Email"></div>
+
+      <div class="fake-input-group" data-name="password" tabindex="0" aria-label="Password" role="textbox" contenteditable="true" spellcheck="false" data-placeholder="Password"></div>
+
+      <!-- Hidden inputs to hold actual values -->
+      <input type="hidden" name="email" id="emailInput" />
+      <input type="hidden" name="password" id="passwordInput" />
+
+      <button type="submit" class="btn-login">Login</button>
+    </form>
   </div>
+
+  <!-- Navbar -->
   <div class="navbar">
     <a href="https://meep.wtf/" class="logo">Meep</a>
 
@@ -31,6 +45,7 @@
     </nav>
   </div>
 
-  <script src="https://static.meep.wtf/static/admin/js/main-scripts.js"></script>
+  <!-- JS -->
+  <script src="https://static.meep.wtf/static/admin/js/login-scripts.js"></script>
 </body>
 </html>
