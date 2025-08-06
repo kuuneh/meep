@@ -7,16 +7,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mc=#p_qm#vsasdpyn!0g6w30z%$a*&l+4-qhnq%b!oyfrqi&^i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'meep.wtf',
-    'api.meep.wtf',
+    'login.meep.wtf',
     '.meep.wtf',  # for all subdomains including username.meep.wtf
     'localhost',
     '127.0.0.1',
 ]
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -103,8 +102,8 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files
-STATIC_URL = '/static/'
+STATIC_URL = 'https://static.meep.wtf/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
