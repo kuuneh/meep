@@ -1,236 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap');
+/* LOGIN FORM */
 
-.inter {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
+.login {
+    background: var(--darkened-bg);
+    height: auto;
 }
 
-.jost {
-  font-family: "Jost", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
+.login #header {
+    height: auto;
+    padding: 15px 16px;
+    justify-content: center;
 }
 
-.gantari {
-  font-family: "Gantari", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
+.login #header h1 {
+    font-size: 1.125rem;
+    margin: 0;
 }
 
-.mozilla-text {
-  font-family: "Mozilla Text", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
+.login #header h1 a {
+    color: var(--header-link-color);
 }
 
-#title {
-  color: white;
+.login #content {
+    padding: 20px;
 }
 
-.title-box {
-  text-align: center;
-  font-size: clamp(2.5rem, 5vw, 4.25rem); /* fluid font size between 2.5rem and 4.25rem */
-  line-height: 1.5;
-  font-weight: 900;
-  color: #fff;
+.login #container {
+    background: var(--body-bg);
+    border: 1px solid var(--hairline-color);
+    border-radius: 4px;
+    overflow: hidden;
+    width: 28em;
+    min-width: 300px;
+    margin: 100px auto;
+    height: auto;
 }
 
-.container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+.login .form-row {
+    padding: 4px 0;
 }
 
-.vertical-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 0;
-  pointer-events: none;
+.login .form-row label {
+    display: block;
+    line-height: 2em;
 }
 
-.small-box {
-  position: relative;
-  font: 1.25rem "Mozilla Text", sans-serif;
-  line-height: 1.4;
-  font-weight: 200;
-  color: #fff;
-  text-align: center;
-  z-index: 1;
-  padding: 1rem 2rem;
-
-  /* text styles */
-  background: transparent;
-}
-
-/* bump layer */
-.small-box::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 50%; /* start at halfway down the text box */
-  width: 100%;
-  height: 50%; /* extend to the bottom */
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  z-index: -1;
-}
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-x: hidden;
-
-}
-
-  .navbar {
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    height: 3.75rem;
-    padding: 0 2%;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.login .form-row #id_username, .login .form-row #id_password {
+    padding: 8px;
+    width: 100%;
     box-sizing: border-box;
-    z-index: 10;
-    color: white;
-    backdrop-filter: blur(8px);
-  }
-
-  .logo {
-    font-size: 1.2rem;
-    font-family: "Mozilla Text", sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-  }
-
-  nav {
-    display: flex;
-    gap: 1rem;
-  }
-
-  nav a {
-    font: 1.25rem "Mozilla Text", sans-serif;
-    color: white;
-    text-decoration: none;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-  }
-
-  nav a:hover {
-    opacity: 0.5;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-  }
-
-  .hamburger div {
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-  }
-
-  /* Mobile sliding drawer */
-@media (max-width: 600px) {
-  nav {
-    position: fixed;
-    top: 3.75rem;
-    right: 0;               /* fixed to right */
-    height: calc(100vh - 3.75rem);
-    width: 250px;
-    background: rgba(0, 0, 0, 0.5);
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-    transform: translateX(100%); /* start off-screen right */
-    transition: transform 0.3s ease;
-    z-index: 9999;
-    display: flex;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-  }
-
-    nav.open {
-      transform: translateX(0);
-    }
-
-    .hamburger {
-      display: flex;
-    }
-  }
-
-/* Content padding so it's not hidden under navbar */
-.content {
-  padding-top: 4.75rem; /* a bit larger than navbar height */
-  text-align: center;
-  color: white;
-  font-family: sans-serif;
-  font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
-.nav-links {
-  font: clamp(1rem, 2vw, 1.25rem) "Mozilla Text";
-  display: flex;
-  gap: 1rem;
+.login .submit-row {
+    padding: 1em 0 0 0;
+    margin: 0;
+    text-align: center;
 }
 
-.btncontainer {
-  display: flex;
-  justify-content: center; /* centers horizontally */
-  padding: 20px;          /* some padding for small screens */
-  box-sizing: border-box; /* include padding in width */
-}
-
-/* Your button styles */
-.button {
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: hue-rotate(120deg);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  font-size: 16px;
-  font-family: "Gantari", sans-serif;
-  font-weight: 700;
-  cursor: pointer;
-  /* Make it block-level to allow width control on mobile */
-  display: block;
-  max-width: 50%;  /* prevent overflow on small screens */
-  width: 200px;     /* fixed width on desktop */
-  text-align: center;
-  margin: 10px auto; /* center inside container */
-  border-radius: 8px; /* optional: nicer rounded corners */
-  box-sizing: border-box;
-    transition: transform 0.3s ease; /* smooth scaling */
-}
-.button:hover {
-  transform: scale(1.1); /* increase size by 10% */
-}
-/* Responsive adjustment */
-@media (max-width: 400px) {
-  .button {
-    width: 90%; /* almost full width on very small screens */
-    padding: 12px 0;
-    font-size: 14px;
-  }
+.login .password-reset-link {
+    text-align: center;
 }
