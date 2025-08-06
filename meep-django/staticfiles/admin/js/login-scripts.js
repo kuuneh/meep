@@ -138,3 +138,13 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Missing #hamburger or #navMenu elements");
   }
 });
+
+const borders = document.querySelectorAll('.hue-border');
+  let deg = 0;
+
+  setInterval(() => {
+    deg = (deg + 2) % 360;
+    borders.forEach(border => {
+      border.style.borderColor = `hsl(${deg}, 100%, 70%)`;
+    });
+  }, 30);

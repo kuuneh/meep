@@ -42,13 +42,11 @@
 }
 
 .container {
-  padding-top: 0;
-  min-height: 100vh;       /* full height */
+  min-height: calc(50vh - 3.75rem); /* subtract navbar height */
   display: flex;
-  justify-content: center; /* vertical centering */
-  align-items: center;     /* horizontal centering */
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  margin-top: 3.75rem;     /* space for navbar */
 }
 
 form {
@@ -267,76 +265,96 @@ html, body {
 }
 
 .custom-login-form {
-  width: 320px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
-  font-family: "Mozilla Text", sans-serif;
-  color: white;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
-/* Input group wrapper */
 .input-group {
   position: relative;
   width: 100%;
 }
 
-/* Hide default input styles */
-.custom-login-form input {
+.input-group input {
   width: 100%;
-  padding: 12px 0 8px 0;
+  padding: 14px 10px 6px 10px;
+  font-size: 1.1rem;
   background: transparent;
   border: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  font-family: "Inter", sans-serif;
+  border-bottom: 2px solid rgba(255,255,255,0.4);
   color: white;
-  font-size: 1.1rem;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.25s ease;
 }
 
-/* Label positioned over input initially */
-.custom-login-form label {
-  position: absolute;
-  top: 12px;
-  left: 0;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1rem;
-  pointer-events: none;
-  transition: 0.3s ease all;
-}
-
-/* When input focused or has value, float label up */
-.custom-login-form input:focus,
-.custom-login-form input:not(:placeholder-shown) {
+.input-group input:focus {
   border-color: #a0ffea;
 }
 
-.custom-login-form input:focus + label,
-.custom-login-form input:not(:placeholder-shown) + label {
-  top: -12px;
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 1.1rem;
+  font-family: "Inter", sans-serif;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: 0.2rem;
   font-size: 0.8rem;
   color: #a0ffea;
 }
 
-/* Remove placeholder text (optional, for cleaner style) */
-.custom-login-form input::placeholder {
+.input-group input::placeholder {
   color: transparent;
 }
 
-/* Button style */
 .btn-login {
-  background-color: rgba(0, 255, 192, 0.4);
+  background-color: rgba(0, 255, 191, 0.7);
   color: #003333;
   padding: 14px 0;
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 8px;
   border: none;
+  font-family: "Inter", sans-serif;
   cursor: pointer;
   transition: background-color 0.25s ease;
+  width: 100%;
+  max-width: 320px;
 }
 
 .btn-login:hover {
-  background-color: rgba(0, 255, 192, 0.7);
+  background-color: rgba(0, 255, 192, 0.5);
+}
+.hue-border {
+  border: 2px solid hsl(0, 100%, 70%);
+  border-radius: 8px;
+  padding: 0.25rem;
+  transition: border-color 0.3s;
+  position: relative;
+  z-index: 0;
+}
+
+.hue-border input,
+.hue-border button {
+  all: unset;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  background: black;
+  color: white;
+  z-index: 1;
+  position: relative;
 }

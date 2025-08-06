@@ -139,15 +139,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const form = document.getElementById("customLoginForm");
-const fakeInputs = form.querySelectorAll(".fake-input-group");
+const borders = document.querySelectorAll('.hue-border');
+  let deg = 0;
 
-form.addEventListener("submit", (e) => {
-  // Copy the contenteditable div text to hidden inputs
-  fakeInputs.forEach(div => {
-    const name = div.getAttribute("data-name");
-    const value = div.textContent.trim();
-    const hiddenInput = form.querySelector(`input[name=${name}]`);
-    if (hiddenInput) hiddenInput.value = value;
-  });
-});
+  setInterval(() => {
+    deg = (deg + 2) % 360;
+    borders.forEach(border => {
+      border.style.borderColor = `hsl(${deg}, 100%, 70%)`;
+    });
+  }, 30);
