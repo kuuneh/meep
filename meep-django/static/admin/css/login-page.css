@@ -111,6 +111,7 @@ html, body {
     z-index: 10;
     color: white;
     backdrop-filter: blur(8px);
+    border-radius: 0px 0px 20px 20px;
   }
 
   .logo {
