@@ -7,43 +7,54 @@
   <link rel="stylesheet" href="https://static.meep.wtf/static/admin/css/login-page.css" />
 </head>
 <body>
-  <!-- Login form container -->
-   <div style="height: 6rem;"></div>
-  <div class="container">
-        <p class="error"></p>
-
-      <form method="POST" class="custom-login-form">
-        <div class="input-group hue-border">
-          <input type="text" name="email" id="email" required autocomplete="email" placeholder=" " />
-          <label for="email">Email</label>
-        </div>
-
-        <div class="input-group hue-border">
-          <input type="password" name="password" id="password" required autocomplete="current-password" placeholder=" " />
-          <label for="password">Password</label>
-        </div>
-
-        <button type="submit" class="btn-login hue-border">Login</button>
-      </form>
-  </div>
-
-  <!-- Navbar -->
-  <div class="navbar">
-    <a href="https://meep.wtf/" class="logo">Meep</a>
-
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+<div class="container">
+  <div class="login-wrapper">
+    <div class="login-logo">
+      <a href="https://meep.wtf/" class="logo">Meep</a>
     </div>
+    <div class="form-container">
+      <form method="POST" action="{% url 'account_login' %}" class="custom-login-form" novalidate>
+        {% csrf_token %}
 
-    <nav id="navMenu" class="blur">
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+        <div class="input-group">
+          {{ form.login }}
+          <label for="{{ form.login.id_for_label }}">Email</label>
+          {% if form.login.errors %}
+            <div class="error">{{ form.login.errors.0 }}</div>
+          {% endif %}
+        </div>
+
+        <div class="input-group">
+          {{ form.password }}
+          <label for="{{ form.password.id_for_label }}">Password</label>
+          {% if form.password.errors %}
+            <div class="error">{{ form.password.errors.0 }}</div>
+          {% endif %}
+        </div>
+
+        {% if form.non_field_errors %}
+          <div class="error">{{ form.non_field_errors.0 }}</div>
+        {% endif %}
+
+        <button type="submit" class="btn-login">Log In</button>
+      </form>
+
+      <div class="signup-link">
+        <p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up</a></p>
+      </div>
+    </div>
   </div>
+</div>
 
-  <!-- JS -->
-  <script src="https://static.meep.wtf/static/admin/js/login-scripts.js"></script>
+<div class="navbar">
+  <a href="https://meep.wtf/" class="logo">Meep</a>
+  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+  <nav id="navMenu" class="blur">
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
+
+<script src="https://static.meep.wtf/static/admin/js/login-scripts.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mc=#p_qm#vsasdpyn!0g6w30z%$a*&l+4-qhnq%b!oyfrqi&^i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'meep.wtf',
@@ -30,6 +30,13 @@ INSTALLED_APPS = [
 
     # CORS
     'corsheaders',
+    # Required by allauth
+    "django.contrib.sites",
+
+    # Allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
 ]
 
 MIDDLEWARE = [
@@ -41,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'meep.urls'
@@ -48,7 +56,7 @@ ROOT_URLCONF = 'meep.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # For custom HTML pages
+        'DIRS': [BASE_DIR / 'templates'],  # Your custom templates folder here
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,10 +74,15 @@ WSGI_APPLICATION = 'meep.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',  # Replace with Postgres or MySQL later
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': r'D:\db.sqlite3',
     }
 }
+SITE_ID = 1
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",  # required for admin
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -85,7 +98,35 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1', 'password2']
+ACCOUNT_FORMS = {
+    'signup': 'builder.forms.CustomSignupForm',
+}
+LOGIN_REDIRECT_URL = '/'  # or your home page url name
+ACCOUNT_LOGOUT_REDIRECT_URL = 'https://meep.wtf/'
+AUTH_USER_MODEL = "builder.CustomUser"
+# Optional extras
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # or "mandatory"
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+#email stuffs
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/email-confirmed/'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/accounts/email-confirmed/'
+EMAIL_HOST_USER = 'login.meep@gmail.com'
+EMAIL_HOST_PASSWORD = 'jagt oiqh pitu ewfj'
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False  # Ensure users aren't auto-logged-in
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # CORS
 SESSION_COOKIE_DOMAIN = ".meep.wtf"   # Allow cookie across all subdomains
 CSRF_COOKIE_DOMAIN = ".meep.wtf"      # Also allow CSRF token to be valid across subdomains

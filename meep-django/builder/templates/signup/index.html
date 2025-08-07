@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Meep Signup</title>
+  <link rel="stylesheet" href="https://static.meep.wtf/static/admin/css/signup-page.css" />
+</head>
+<body>
+<div class="container">
+  <div class="login-wrapper">
+    <div class="login-logo">
+      <a href="https://meep.wtf/" class="logo">Meep</a>
+    </div>
+    <div class="form-container">
+      <form method="POST" action="{% url 'account_signup' %}" class="custom-login-form" novalidate>
+        {% csrf_token %}
+
+        <div class="input-group">
+          {{ form.email }}
+          <label for="{{ form.email.id_for_label }}">Email</label>
+          {% if form.email.errors %}
+            <div class="error">{{ form.email.errors.0 }}</div>
+          {% endif %}
+        </div>
+
+        <div class="input-group">
+          {{ form.password1 }}
+          <label for="{{ form.password1.id_for_label }}">Password</label>
+          {% if form.password1.errors %}
+            <div class="error">{{ form.password1.errors.0 }}</div>
+          {% endif %}
+        </div>
+
+        <div class="input-group">
+          {{ form.password2 }}
+          <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+          {% if form.password2.errors %}
+            <div class="error">{{ form.password2.errors.0 }}</div>
+          {% endif %}
+        </div>
+
+        {% if form.non_field_errors %}
+          <div class="error">{{ form.non_field_errors.0 }}</div>
+        {% endif %}
+
+        <button type="submit" class="btn-login">Sign Up</button>
+      </form>
+
+      <div class="signup-link">
+        <p>Already have an account? <a href="{% url 'account_login' %}">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="navbar">
+  <a href="https://meep.wtf/" class="logo">Meep</a>
+  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+  <nav id="navMenu" class="blur">
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
+
+<script src="https://static.meep.wtf/static/admin/js/signup-page.js"></script>
+</body>
+</html>

@@ -306,9 +306,9 @@ html, body {
   transition: all 0.2s ease;
 }
 
+/* Label animation on focus */
 .input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label,
-.input-group input[value]:not(:placeholder-shown) + label {
+.input-group input:not(:placeholder-shown):not(:focus) + label {
   top: -0.6rem;
   left: 0.75rem;
   font-size: 0.75rem;

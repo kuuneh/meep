@@ -1,0 +1,9 @@
+Hi {{ user.email }},
+
+Thanks for signing up for Meep! Please confirm your email by clicking the link below:
+
+{{ activate_url }}
+
+If you didn’t sign up, you can ignore this email.
+
+— https://meep.wtf/

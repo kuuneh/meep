@@ -138,13 +138,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Missing #hamburger or #navMenu elements");
   }
 });
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all input fields of type text, email, and password
+  const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
 
-const borders = document.querySelectorAll('.hue-border');
-  let deg = 0;
-
-  setInterval(() => {
-    deg = (deg + 2) % 360;
-    borders.forEach(border => {
-      border.style.borderColor = `hsl(${deg}, 100%, 70%)`;
-    });
-  }, 30);
+  inputs.forEach(input => {
+    input.placeholder = " ";
+  });
+});
